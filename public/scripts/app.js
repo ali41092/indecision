@@ -5,7 +5,8 @@ console.log('App.js is running!');
 // JSX - JavaScript XML 
 var app = {
     title: "Indecision App",
-    subtitle: "Put your decisions in the hands of a computer"
+    subtitle: "Put your decisions in the hands of a computer",
+    options: []
 };
 var template = React.createElement(
     "div",
@@ -15,46 +16,41 @@ var template = React.createElement(
         null,
         app.title
     ),
-    React.createElement(
+    app.subtitle && React.createElement(
         "p",
         null,
         app.subtitle
     ),
-    React.createElement(
-        "ol",
-        null,
-        React.createElement(
-            "li",
-            null,
-            "Item one"
-        ),
-        React.createElement(
-            "li",
-            null,
-            "Item two"
-        )
-    )
+    app.options.length > 0 ? "Here are your options" : "No Options"
 );
 
-var username = "Ali Zahid Shahab";
+var user = {
+    name: "Ali Zahid",
+    age: 26,
+    location: "Islamabad"
+};
+function getLocation(location) {
+    if (location) return React.createElement(
+        "p",
+        null,
+        location
+    );else return undefined;
+}
 var templateTwo = React.createElement(
     "div",
     null,
     React.createElement(
         "h1",
         null,
-        username
+        user.name ? user.name : 'Anonymous'
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         "p",
         null,
-        "Age: 26"
+        "Age: ",
+        user.age
     ),
-    React.createElement(
-        "p",
-        null,
-        "Location: Philadelphia"
-    )
+    getLocation(user.location)
 );
 
 var appRoot = document.getElementById('app');
