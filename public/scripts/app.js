@@ -1,15 +1,23 @@
-'use strict';
+"use strict";
 
-// const square = function (x) {
-//     return x * x;
+// const user = {
+//     name: "Ali Zahid",
+//     cities: ['Islalamad', 'Lahore','Karachi'],
+//     printplacesLived: function () {
+//         return this.cities.map((city) => this.name + " has lived in " + city);
+//     }
 // }
+// console.log(user.printplacesLived());
 
-// const squarearrow = (x) =>  x * x; 
-// console.log(square(8));
-// console.log(squarearrow(7))
+var multiplier = {
+    numbers: [10, 20, 30],
+    multiplyBy: 2,
+    multiply: function multiply() {
+        var _this = this;
 
-var getFirstName = function getFirstName(fullname) {
-  return fullname.split(' ')[0];
+        return this.numbers.map(function (x) {
+            return x * _this.multiplyBy;
+        });
+    }
 };
-
-console.log(getFirstName('Ali Zahid Shahab'));
+console.log(multiplier.multiply());
