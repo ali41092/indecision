@@ -1,23 +1,83 @@
-"use strict";
+'use strict';
 
-// const user = {
-//     name: "Ali Zahid",
-//     cities: ['Islalamad', 'Lahore','Karachi'],
-//     printplacesLived: function () {
-//         return this.cities.map((city) => this.name + " has lived in " + city);
-//     }
-// }
-// console.log(user.printplacesLived());
+console.log('App.js is running!');
 
-var multiplier = {
-    numbers: [10, 20, 30],
-    multiplyBy: 2,
-    multiply: function multiply() {
-        var _this = this;
-
-        return this.numbers.map(function (x) {
-            return x * _this.multiplyBy;
-        });
-    }
+var app = {
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer',
+  options: ['One', 'Two']
 };
-console.log(multiplier.multiply());
+var template = React.createElement(
+  'div',
+  null,
+  React.createElement(
+    'h1',
+    null,
+    app.title
+  ),
+  app.subtitle && React.createElement(
+    'p',
+    null,
+    app.subtitle
+  ),
+  React.createElement(
+    'p',
+    null,
+    app.options.length > 0 ? 'Here are your options' : 'No options'
+  ),
+  React.createElement(
+    'ol',
+    null,
+    React.createElement(
+      'li',
+      null,
+      'Item one'
+    ),
+    React.createElement(
+      'li',
+      null,
+      'Item two'
+    )
+  )
+);
+var count = 0;
+var addOne = function addOne() {
+  count += 1;
+  console.log('addOne!' + count);
+};
+var minusOne = function minusOne() {
+  console.log(count);
+  count -= 1;
+};
+var resetAll = function resetAll() {
+  count = 0;
+  console.log(count);
+};
+var templateTwo = React.createElement(
+  'div',
+  null,
+  React.createElement(
+    'h1',
+    null,
+    'Count: ',
+    count
+  ),
+  React.createElement(
+    'button',
+    { id: 'my-id', onClick: addOne },
+    '+1'
+  ),
+  React.createElement(
+    'button',
+    { onClick: minusOne },
+    '-1'
+  ),
+  React.createElement(
+    'button',
+    { onClick: resetAll },
+    'Reset'
+  )
+);
+var appRoot = document.getElementById('app');
+
+ReactDOM.render(templateTwo, appRoot);
