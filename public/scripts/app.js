@@ -20,6 +20,11 @@ var onFormSubmit = function onFormSubmit(e) {
   }
 };
 
+var onMakeDecision = function onMakeDecision() {
+  var rand = Math.floor(Math.random() * app.options.length);
+  var option = app.options[rand];
+  alert(option);
+};
 var onRemoveAll = function onRemoveAll() {
   app.options = [];
   render();
@@ -54,6 +59,11 @@ var render = function render() {
     ),
     React.createElement(
       'button',
+      { disabled: app.options.length === 0, onClick: onMakeDecision },
+      'What should I do?'
+    ),
+    React.createElement(
+      'button',
       { onClick: onRemoveAll },
       'Remove All'
     ),
@@ -63,7 +73,7 @@ var render = function render() {
       app.options.map(function (option) {
         return React.createElement(
           'li',
-          null,
+          { key: option },
           option
         );
       })
